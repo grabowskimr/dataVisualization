@@ -1,0 +1,55 @@
+.sidebar {
+	max-width: $sidebarWidth;
+	position: fixed;
+	top: $offsetTop;
+	left: 0px;
+	width: 100%;
+	box-sizing: border-box;
+	border-top: 1px solid $borderColor;
+	background: white;
+	padding: 1.5rem 0;
+	height: calc(100vh - #{$offsetTop});
+	.sidebar-title {
+		font-weight: 300;
+		font-size: 1.2rem;
+		text-transform: uppercase;
+		text-align: center;
+		color: $grey;
+		margin: 0px;
+	}
+	.sidebar-menu {
+		padding: 0px;
+		margin: 0px;
+		list-style: none;
+		margin-top: 1rem;
+		.sidebar-menu-link {
+			display: block;
+			width: 100%;
+			padding: 0.75rem 0.25rem 0.75rem 1.5rem;
+			box-sizing: border-box;
+			transition: all 0.1s linear;
+			background: white;
+			color: black;
+			text-decoration: none;
+			font-size: 1rem;
+			&:hover {
+				color: black;
+				background: $lightGrey;
+			}
+			&.active {
+				background: $lightGrey;
+				position: relative;
+				&:before {
+					content: '';
+					display: block;
+					width: 0.4rem;
+					height: 100%;
+					background: red;
+					position: absolute;
+					top: 0px;
+					left: 0px;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,18 @@
+.jobs-chart {
+	.jobs-chart-title {
+		margin: 0px;
+		font-size: 1.4rem;
+		font-weight: 300;
+		display: block;
+		text-align: center;
+		width: 100%;
+		text-transform: uppercase;
+	}
+	.jobs-chart-search {
+		display: flex;
+		max-width: 100%;
+		width: 40rem;
+		margin: 0.4rem auto;
+		justify-content: center;
+	}
+}

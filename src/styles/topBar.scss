@@ -1,0 +1,33 @@
+.topbar {
+	background: white;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	padding: 0 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: $offsetTop;
+	box-sizing: border-box;
+	z-index: 9999;
+	.topbar-title {
+		margin: 0;
+		font-size: 2rem;
+		line-height: normal;
+		display: flex;
+		align-items: center;
+		a {
+			text-decoration: none;
+			color: black;
+		}
+	}
+	.topbar-toggle-menu {
+		border: none;
+		background: none;
+		margin: 0px 5px 0px;
+		padding: 0px;
+		outline: none;
+		display: none;
+	}
+}
