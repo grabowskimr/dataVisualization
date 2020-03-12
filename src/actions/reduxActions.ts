@@ -26,3 +26,40 @@ export const savePopulationToStore = (population: any): Action => {
 		}
 	};
 };
+
+export const insertPackageSearchResults = (packages: Package[]): Action => {
+	return {
+		type: ACTIONS.INSERT_PACKAGE_SEARCH_RESULTS,
+		payload: {
+			packages
+		}
+	};
+};
+
+export const clearPackageSearchResults = (): Action => {
+	return {
+		type: ACTIONS.CLEAR_PACKAGE_SEARCH_RESULTS,
+		payload: {}
+	};
+};
+
+export const showLoader = (): Action => {
+	return {
+		type: ACTIONS.SHOW_LOADER,
+		payload: {}
+	};
+};
+
+export const hideLoader = (): Action => {
+	return {
+		type: ACTIONS.HIDE_LOADER,
+		payload: {}
+	};
+};
+
+export const toggleMenu = () => {
+	return {
+		type: ACTIONS.TOGGLE_MENU,
+		payload: {}
+	};
+};

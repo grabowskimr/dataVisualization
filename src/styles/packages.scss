@@ -1,0 +1,33 @@
+.packages {
+	.search {
+		text-align: center;
+		margin-bottom: 1rem;
+	}
+	.no-data-info {
+		text-align: center;
+		.title {
+			font-weight: 300;
+		}
+	}
+}
+.packages-table {
+	border-collapse: collapse;
+	width: 100%;
+	table-layout: fixed;
+	word-break: break-word;
+	th {
+		background: $borderColor;
+		padding: 0.5rem;
+		border: none;
+		text-align: left;
+	}
+	tr {
+		border-bottom: 1px solid $borderColor;
+		&:last-of-type {
+			border: none;
+		}
+		td {
+			padding: 0.5rem;
+		}
+	}
+}

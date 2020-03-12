@@ -1,0 +1,26 @@
+.groups-list {
+	.groups-list-title {
+		margin: 0px;
+		font-size: 1.4rem;
+		font-weight: 300;
+		display: block;
+		text-align: center;
+		width: 100%;
+		text-transform: uppercase;
+	}
+}
+.groups {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	li {
+		display: block;
+		border-bottom: 1px solid $borderColor;
+		padding: 1rem;
+		font-weight: 500;
+		font-size: 1rem;
+		&:last-of-type {
+			border: none;
+		}
+	}
+}

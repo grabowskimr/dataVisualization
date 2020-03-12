@@ -3,7 +3,7 @@ import ChartJS from 'chart.js';
 
 type Props = {
 	data: any;
-	labels: any;
+	labels: string[];
 	displayByValue: string;
 	chartType: string;
 	maintainAspectRatio?: boolean;
@@ -11,7 +11,7 @@ type Props = {
 
 const Chart: React.FC<Props> = ({ data, labels, displayByValue, chartType, maintainAspectRatio }) => {
 	const canvas = useRef<HTMLCanvasElement>(null);
-	const chartWithBg = chartType === 'polarArea' || chartType === 'bar' || chartType === 'pie';
+	const chartWithBg: boolean = chartType === 'polarArea' || chartType === 'bar' || chartType === 'pie' || chartType === 'doughnut';
 	let myChart: any = useRef();
 
 	useEffect(() => {
@@ -67,6 +67,10 @@ const Chart: React.FC<Props> = ({ data, labels, displayByValue, chartType, maint
 			},
 			options: {
 				maintainAspectRatio: maintainAspectRatio,
+				aspectRatio: 1,
+				legend: {
+					display: window.innerWidth > 600
+				},
 				scales: {
 					yAxes: [
 						{

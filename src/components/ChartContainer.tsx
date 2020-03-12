@@ -5,19 +5,22 @@ import Search from './Search';
 import ChartPlaceholder from '../containers/ChartPlaceholder';
 type Props = {
 	data: any[];
-	defaultValueInChart: string;
+	defaultTypeInChart: string;
 	chartType: string;
 	maintainAspectRatio: boolean;
 	label: string;
 	searchBy?: string;
 	showSearch?: boolean;
 	title?: string;
+	searchPlaceholder?: string;
+	types?: string[];
+	onlySelect?: boolean;
 };
 
 const ChartContainer: React.FC<Props> = (props): JSX.Element => {
 	// used redux store to cache data from api, which has a very rare update rate
 	const [localData, setLocalData] = useState<any[]>([]);
-	const [type, setType] = useState(props.defaultValueInChart);
+	const [type, setType] = useState<string>(props.defaultTypeInChart);
 	const [labels, setLabels] = useState<string[]>([]);
 	const [dataTypes, setDataTypes] = useState<string[]>([]);
 
@@ -25,9 +28,13 @@ const ChartContainer: React.FC<Props> = (props): JSX.Element => {
 		if (props.data.length) {
 			setLocalData(props.data);
 			setLabels(props.data.map((record: any) => record[props.label]));
-			setDataTypes(Object.keys(props.data[0]));
+			if (props.types) {
+				setDataTypes(props.types);
+			} else {
+				setDataTypes(Object.keys(props.data[0]).filter(type => type !== props.label));
+			}
 		}
-	}, [props.data, props.label]);
+	}, [props.data, props.label, props.types]);
 
 	const onSearchHandler = (input: string) => {
 		const searchText = input.toLowerCase().replace(/ */g, '');
@@ -78,6 +85,8 @@ const ChartContainer: React.FC<Props> = (props): JSX.Element => {
 								types={dataTypes}
 								handleSelectChange={onSelectChange}
 								type={type}
+								onlySelect={props.onlySelect}
+								searchPlaceholder={props.searchPlaceholder ? props.searchPlaceholder : ''}
 							/>
 						</div>
 					) : (

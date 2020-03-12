@@ -1,0 +1,44 @@
+@media screen and (max-width: 1240px) {
+	.topbar {
+		padding: 0px 10px;
+		.topbar-title {
+			margin-right: 10px;
+		}
+		.topbar-toggle-menu {
+			display: block;
+		}
+	}
+	.main {
+		max-width: 100%;
+		margin-left: 0px;
+		box-sizing: border-box;
+		padding: 0.5rem;
+	}
+	.sidebar {
+		z-index: 999;
+		border-right: 1px solid $borderColor;
+		left: -250px;
+		right: auto;
+		transition: $transitionCubic;
+		&.show {
+			right: auto;
+			left: 0px;
+		}
+	}
+	.search input {
+		width: auto;
+	}
+}
+
+@media screen and (max-width: 958px) {
+	.app .paper {
+		width: 100%;
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	.search .search-input,
+	.search .search-select {
+		width: 100%;
+		margin: 0.5rem 0px;
+	}
+}

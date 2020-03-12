@@ -1,5 +1,6 @@
 .search {
 	width: 100%;
+	text-align: center;
 	.search-input,
 	.search-select {
 		width: calc(50% - 0.8rem);
@@ -11,7 +12,7 @@
 		border: 1px solid $borderColor;
 		margin: 0px 0.4rem;
 		box-sizing: border-box;
-		height: 40px;
+		height: 45px;
 		border-radius: 5px;
 	}
 }

@@ -15,7 +15,7 @@ type Props = {
 const JobsChart: React.FC<Props> = (props): JSX.Element => {
 	const label = 'fullStateName';
 	const dispatch = useDispatch();
-	// used redux store to cache data from api, which has a very rare update rate
+	// used redux store to cache data from api, which has a very rare update rate ;)
 	const jobs = useSelector((state: ReduxState) => state.jobs);
 
 	useEffect(() => {
@@ -26,13 +26,14 @@ const JobsChart: React.FC<Props> = (props): JSX.Element => {
 		<div className={`jobs ${props.className ? props.className : ''}`}>
 			<ChartContainer
 				data={jobs}
-				defaultValueInChart={props.defaultDataType}
+				defaultTypeInChart={props.defaultDataType}
 				maintainAspectRatio={props.maintainAspectRatio}
 				chartType={props.chartType}
 				label={label}
 				showSearch={true}
 				searchBy="name"
 				title={props.title}
+				searchPlaceholder="Search eg. CA, NY, WW"
 			/>
 		</div>
 	);

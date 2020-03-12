@@ -13,7 +13,7 @@ const Home: React.FC = (): JSX.Element => (
 			<JobsChart defaultDataType="manufacturing" title="Jobs Table" chartType="polarArea" maintainAspectRatio={true} />
 		</Paper>
 		<Paper width={5}>
-			<Population defaultDataType="5 to 13 Years" title="Population in US states" chartType="pie" maintainAspectRatio={true} />
+			<Population defaultDataType="5 to 13 Years" title="Population in US states" chartType="doughnut" maintainAspectRatio={true} />
 		</Paper>
 	</div>
 );

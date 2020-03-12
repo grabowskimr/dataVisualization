@@ -27,6 +27,9 @@ type ReduxState = {
 	jobs: Job[];
 	states: States;
 	population: any;
+	packages: Package[];
+	loaderVisible: boolean;
+	toggleMenu: boolean;
 };
 
 type Action = {

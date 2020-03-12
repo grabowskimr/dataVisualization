@@ -6,7 +6,10 @@ import ACTIONS from '../constants/actions';
 export const initialState: ReduxState = {
 	jobs: [],
 	states: {},
-	population: []
+	population: [],
+	packages: [],
+	loaderVisible: false,
+	toggleMenu: false
 };
 
 export const appReducer = (state = initialState, action: Action): ReduxState => {
@@ -25,6 +28,31 @@ export const appReducer = (state = initialState, action: Action): ReduxState => 
 			return {
 				...state,
 				population: action.payload.population ? action.payload.population : []
+			};
+		case ACTIONS.INSERT_PACKAGE_SEARCH_RESULTS:
+			return {
+				...state,
+				packages: action.payload.packages ? action.payload.packages : []
+			};
+		case ACTIONS.CLEAR_PACKAGE_SEARCH_RESULTS:
+			return {
+				...state,
+				packages: []
+			};
+		case ACTIONS.SHOW_LOADER:
+			return {
+				...state,
+				loaderVisible: true
+			};
+		case ACTIONS.HIDE_LOADER:
+			return {
+				...state,
+				loaderVisible: false
+			};
+		case ACTIONS.TOGGLE_MENU:
+			return {
+				...state,
+				toggleMenu: !state.toggleMenu
 			};
 		default:
 			return state;

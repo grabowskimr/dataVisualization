@@ -2,13 +2,15 @@ import React, { useState, useEffect, ChangeEvent, useRef } from 'react';
 
 type Props = {
 	handleSearch: (input: string) => void;
-	handleSelectChange: (e: ChangeEvent<HTMLSelectElement>) => void;
+	handleSelectChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
 	handleEmpty?: () => void;
-	types: string[];
-	type: string;
+	types?: string[];
+	type?: string;
+	searchPlaceholder: string;
+	onlySelect?: boolean;
 };
 
-const Search: React.FC<Props> = ({ handleEmpty, handleSearch, types, handleSelectChange, type }): JSX.Element => {
+const Search: React.FC<Props> = ({ handleEmpty, handleSearch, types, handleSelectChange, type, searchPlaceholder, onlySelect }): JSX.Element => {
 	const [searchInput, setSearchInput] = useState<string>('');
 	const minValueLength = 2;
 	const interval: any = useRef();
@@ -38,14 +40,17 @@ const Search: React.FC<Props> = ({ handleEmpty, handleSearch, types, handleSelec
 
 	return (
 		<div className="search">
-			<input type="text" placeholder="Search eg. CA, NY, WW" onChange={handeSearch} className="search-input"></input>
-			<select name="type" onChange={handleSelectChange} value={type} className="search-select">
-				{types.map((type: string) => (
-					<option key={type} value={type}>
-						{type}
-					</option>
-				))}
-			</select>
+			{!onlySelect ? <input type="text" placeholder={searchPlaceholder} onChange={handeSearch} className="search-input"></input> : null}
+			{type ? (
+				<select name="type" onChange={handleSelectChange} value={type} className="search-select">
+					{types &&
+						types.map((type: string) => (
+							<option key={type} value={type}>
+								{type}
+							</option>
+						))}
+				</select>
+			) : null}
 		</div>
 	);
 };

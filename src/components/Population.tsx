@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Chart from './Chart';
 import { getPopulation } from '../actions/apiCalls';
 import ChartContainer from './ChartContainer';
 
@@ -26,13 +25,14 @@ const Population: React.FC<Props> = (props): JSX.Element => {
 		<div className={`population ${props.className ? props.className : ''}`}>
 			<ChartContainer
 				data={population}
-				defaultValueInChart={props.defaultDataType}
+				defaultTypeInChart={props.defaultDataType}
 				maintainAspectRatio={props.maintainAspectRatio}
 				chartType={props.chartType}
 				label={label}
-				showSearch={false}
+				showSearch={true}
 				searchBy="name"
 				title={props.title}
+				onlySelect={true}
 			/>
 		</div>
 	);
