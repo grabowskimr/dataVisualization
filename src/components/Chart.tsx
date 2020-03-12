@@ -31,7 +31,6 @@ const Chart: React.FC<Props> = ({ data, labels, displayByValue, chartType, maint
 			initchart();
 		}
 		return () => {
-			console.log('des');
 			myChart.current.destroy();
 			myChart.current = null;
 		};

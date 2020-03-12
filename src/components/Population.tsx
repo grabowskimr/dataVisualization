@@ -3,42 +3,38 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Chart from './Chart';
 import { getPopulation } from '../actions/apiCalls';
+import ChartContainer from './ChartContainer';
 
 type Props = {
 	defaultDataType: string;
 	title: string;
 	chartType: string;
 	maintainAspectRatio: boolean;
+	className?: string;
 };
 
 const Population: React.FC<Props> = (props): JSX.Element => {
 	const label = 'State';
 	const dispatch = useDispatch();
 	const population = useSelector((state: ReduxState) => state.population);
-	const [labels, setLabels] = useState(population.map((record: any) => record[label]));
-	const [type, setType] = useState(props.defaultDataType);
 
 	useEffect(() => {
-		console.log(population);
-		if (!population.length) {
-			dispatch(getPopulation());
-		} else {
-			setLabels(population.map((record: any) => record[label]));
-		}
+		!population.length && dispatch(getPopulation());
 	}, [dispatch, population]);
 
 	return (
-		<>
-			{population.length ? (
-				<Chart
-					data={population}
-					labels={labels}
-					displayByValue={type}
-					chartType={props.chartType}
-					maintainAspectRatio={props.maintainAspectRatio}
-				/>
-			) : null}
-		</>
+		<div className={`population ${props.className ? props.className : ''}`}>
+			<ChartContainer
+				data={population}
+				defaultValueInChart={props.defaultDataType}
+				maintainAspectRatio={props.maintainAspectRatio}
+				chartType={props.chartType}
+				label={label}
+				showSearch={false}
+				searchBy="name"
+				title={props.title}
+			/>
+		</div>
 	);
 };
 

@@ -18,11 +18,20 @@ export const getStates = (): TResult<Promise<void>> => async (dispatch: TDispatc
 	}
 };
 
-export const getJobs = (): TResult<Promise<void>> => async (dispatch: TDispatch) => {
+export const getJobsWithStates = (): TResult<Promise<void>> => async (dispatch: TDispatch) => {
 	try {
-		const { data } = await axios.get('/data/jobs.json');
-		dispatch(saveJobsToStore(data));
-		return data;
+		const { data: states } = await axios.get('/data/states.json');
+		const { data: jobs } = await axios.get('/data/jobs.json');
+
+		const combinedJobs = jobs.map((job: Job) => {
+			return {
+				...job,
+				fullStateName: states[job.name.toUpperCase()]
+			};
+		});
+
+		dispatch(saveJobsToStore(combinedJobs));
+		return combinedJobs;
 	} catch (e) {
 		console.log(e.message);
 	}
